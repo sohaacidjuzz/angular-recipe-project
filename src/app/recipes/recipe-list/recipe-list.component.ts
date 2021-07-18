@@ -21,12 +21,19 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipes = this.recipeListServices.getRecipes();
+
+    this.recipeListServices.recipeAdded.subscribe((recipes: Recipe[])=> {
+      this.recipes = recipes;
+    });
   }
   addRecipe() {
 
-    this.recipes.push(new Recipe(this.recipeName,
+    this.recipeListServices.addRecipe(new Recipe(this.recipeName,
       this.recipeDescription,
-      'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count));
+      'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count))
+    // this.recipes.push(new Recipe(this.recipeName,
+    //   this.recipeDescription,
+    //   'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count));
     this.count = this.count + 1;
   }
   OndeleteItem(event:{name: string, description: string}) {
