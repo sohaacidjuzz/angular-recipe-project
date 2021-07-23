@@ -19,6 +19,11 @@ export class ShoppingListService {
 
   addIngredient(ingredient: Ingredient) {
     this.ingridients.push(ingredient);
-    this.ingredientAdded.emit(this.ingridients);
+    this.ingredientAdded.emit(this.ingridients.slice());
+  }
+
+  addIngredientsFromReipe(ingredient: Ingredient[]) {
+    this.ingridients.push(...ingredient);
+    this.ingredientAdded.emit(this.ingridients.slice());
   }
 }

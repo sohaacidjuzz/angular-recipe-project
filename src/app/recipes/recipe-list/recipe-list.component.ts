@@ -30,7 +30,7 @@ export class RecipeListComponent implements OnInit {
 
     this.recipeListServices.addRecipe(new Recipe(this.recipeName,
       this.recipeDescription,
-      'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count))
+      'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count, []))
     // this.recipes.push(new Recipe(this.recipeName,
     //   this.recipeDescription,
     //   'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count));
@@ -46,14 +46,6 @@ export class RecipeListComponent implements OnInit {
   {
     this.personName = 'Somnath';
   }
-  onSelectedItem(event:Recipe) {
-    this.selected = event.id;
-    this.selecteditem.emit({
-      name: event.name,
-      description: event.description,
-      imagepath: event.imagepath,
-      id: event.id
-    });
-  }
+
 
 }
