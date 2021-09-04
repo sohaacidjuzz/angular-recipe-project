@@ -12,6 +12,8 @@ export class RecipeItemComponent implements OnInit, OnChanges {
   @Input() recipieItem:Recipe;
   @Input() name: String;
   @Input() selected : number;
+
+  @Input() index: number;
   @Output() deleteItem = new EventEmitter<{name: string, description: string}>();
   // @Output() selectedItem = new EventEmitter<Recipe>();
   
@@ -30,7 +32,5 @@ export class RecipeItemComponent implements OnInit, OnChanges {
     this.deleteItem.emit({name: this.recipieItem.name, 
       description: this.recipieItem.description});
   }
-  onItemSelect() {
-    this.recipeSelected.recipeSelected.emit(this.recipieItem);
-  }
+ 
 }

@@ -31,6 +31,11 @@ export class RecipesService {
   getRecipes() {
     return this.recipes.slice();
   }
+
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
+
   addRecipe(recipe:Recipe) {
     this.recipes.push(recipe);
     this.recipeAdded.emit(this.recipes);
