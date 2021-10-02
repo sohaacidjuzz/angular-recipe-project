@@ -9,8 +9,8 @@ import { Recipe } from './recipe.model';
 })
 export class RecipesService {
 
-  recipeSelected = new EventEmitter<Recipe>();
-  recipeAdded = new EventEmitter<Recipe[]>();
+  
+  recipeAdded = new Subject<Recipe[]>();
   public recipes: Recipe[] = [
     new Recipe('A Test Recipe','This is a simple test recipe',
     'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',
@@ -38,7 +38,7 @@ export class RecipesService {
 
   addRecipe(recipe:Recipe) {
     this.recipes.push(recipe);
-    this.recipeAdded.emit(this.recipes);
+    this.recipeAdded.next(this.recipes);
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
