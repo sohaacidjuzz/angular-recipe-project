@@ -25,37 +25,14 @@ export class RecipeListComponent implements OnInit {
   ngOnInit(): void {
     this.recipes = this.recipeListServices.getRecipes();
 
-    this.recipeListServices.recipeAdded.subscribe((recipes: Recipe[])=> {
+    this.recipeListServices.recipeChanged.subscribe((recipes: Recipe[])=> {
       this.recipes = recipes;
+      console.log(this.recipes);
     });
   }
 
   onNewRecipe() {
     this.router.navigate(['new'], {relativeTo: this.route});
-  }
-
-
-
-
-  addRecipe() {
-
-    this.recipeListServices.addRecipe(new Recipe(this.recipeName,
-      this.recipeDescription,
-      'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count, []))
-    // this.recipes.push(new Recipe(this.recipeName,
-    //   this.recipeDescription,
-    //   'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',this.count));
-    this.count = this.count + 1;
-  }
-  OndeleteItem(event:{name: string, description: string}) {
-    let index = this.recipes.findIndex(recipe => recipe.name === event.name 
-      && recipe.description === event.description);
-    this.recipes.splice(index,1);
-  }
-  /** ngOnChanges in child cmponent from parent component */
-  updateChildComponentName()
-  {
-    this.personName = 'Somnath';
   }
 
 

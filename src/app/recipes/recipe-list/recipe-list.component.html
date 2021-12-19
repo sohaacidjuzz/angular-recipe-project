@@ -12,12 +12,6 @@
         class="form-control" [(ngModel)]="recipeDescription"></textarea>
     </div>
 </div>
-<!-- ngOnChanges in child cmponent from parent component-->
-<div class="row">
-    <div class="col-xs-6">
-        <button (click)="updateChildComponentName()">Update Child Component Property</button>
-    </div>
-</div>
 <div class="row">
     
     <div class="col-xs-12">
@@ -25,8 +19,6 @@
         *ngFor="let recipe of recipes; let i = index"
         [recipieItem]="recipe"
         [index]="i"
-        [name]="personName"
-        (deleteItem)="OndeleteItem($event)"
         >
         </app-recipe-item>
     </div>

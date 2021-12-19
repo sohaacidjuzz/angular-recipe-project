@@ -10,16 +10,15 @@ import { Recipe } from './recipe.model';
 export class RecipesService {
 
   
-  recipeAdded = new Subject<Recipe[]>();
+  recipeChanged = new Subject<Recipe[]>();
   public recipes: Recipe[] = [
     new Recipe('A Test Recipe','This is a simple test recipe',
     'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',
-    1,
     [
       new Ingredient('Pine Apple',2)
     ]),
     new Recipe('A Test Recipe','This is a simple test recipe',
-    'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg',2
+    'https://cdn.loveandlemons.com/wp-content/uploads/2020/03/pantry-recipes-2.jpg'
     ,
     [
       new Ingredient('Pom Granet', 7)
@@ -38,7 +37,19 @@ export class RecipesService {
 
   addRecipe(recipe:Recipe) {
     this.recipes.push(recipe);
-    this.recipeAdded.next(this.recipes);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, recipe: Recipe)
+  {
+    this.recipes[index] = recipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number)
+  {
+    this.recipes.splice(index,1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {

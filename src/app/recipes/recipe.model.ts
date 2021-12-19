@@ -3,15 +3,13 @@ import { Ingredient } from "../shared/ingredient";
 export class Recipe {
     public name: string;
     public description: string;
-    public imagepath: string;
-    public id: number;
+    public imagePath: string;
     public ingredients:Ingredient[];
 
-    constructor(name:string, desc: string, imgpath: string, num: number, ingredients:Ingredient[]) {
+    constructor(name:string, desc: string, imgpath: string, ingredients:Ingredient[]) {
         this.name = name;
         this.description = desc;
-        this.imagepath = imgpath;
-        this.id = num;
+        this.imagePath = imgpath;
         this.ingredients = ingredients;
     }
 }
